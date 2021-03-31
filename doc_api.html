@@ -1,0 +1,961 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>API VUTTR (Very Useful Tools to Remember)</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}body{color:black;background:white;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #f2f2f2;margin-bottom:12px}h1,h2,h3,h4,h5{color:black;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#428bca;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(0,0,0,0) 20%, rgba(0,0,0,0.2) 51.4%, rgba(255,255,255,0.2) 51.4%, rgba(255,255,255,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(0,0,0,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #e8e8e8}blockquote p:last-child{margin-bottom:0}pre{background-color:#f5f5f5;padding:12px;border:1px solid #cfcfcf;border-radius:6px;overflow:auto}pre code{color:black;background-color:transparent;padding:0;border:none}code{color:#444;background-color:#f5f5f5;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #cfcfcf;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#fafafa}table th,table td{padding:6px 12px;border:1px solid #e6e6e6}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:black;background-color:#f0f6fb;border-left:4px solid #428bca}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#428bca}.warning{color:black;background-color:#fbf1f0;border-left:4px solid #c9302c}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#c9302c}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:black;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(0,0,0,0.7);padding:8px 12px;border-top:1px solid #d9d9d9;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#000;background-color:#f2f2f2;border-radius:10px;margin:-2px 0}.badge.get{color:#70bbe1;background-color:#d9edf7}.badge.head{color:#70bbe1;background-color:#d9edf7}.badge.options{color:#70bbe1;background-color:#d9edf7}.badge.put{color:#f0db70;background-color:#fcf8e3}.badge.patch{color:#f0db70;background-color:#fcf8e3}.badge.post{color:#93cd7c;background-color:#dff0d8}.badge.delete{color:#ce8383;background-color:#f2dede}.collapse-button{float:right}.collapse-button .close{display:none;color:#428bca;cursor:pointer}.collapse-button .open{color:#428bca;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#428bca}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:white}.right pre{background-color:#1d1f21;border:1px solid #1d1f21}.right pre code{color:#c5c8c6}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e8ab8}.definition .method.head{color:#2e8ab8}.definition .method.options{color:#2e8ab8}.definition .method.post{color:#56b82e}.definition .method.put{color:#b8a22e}.definition .method.patch{color:#b8a22e}.definition .method.delete{color:#b82e2e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:black;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#444}.right .example-names .tab-button{color:white;border:1px solid #666;border-radius:6px}.right .example-names .tab-button.active{background-color:#5e5e5e}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#fbfbfb;border-right:1px solid #f0f0f0;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#333;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(0,0,0,0.5);background-color:#f2f2f2;text-decoration:none !important;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:white;border:1px solid #d9d9d9;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#f2f2f2;border-bottom:1px solid #d9d9d9;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #d9d9d9}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#337ab7}.action h4.action-heading .method.head{color:#fff;background-color:#337ab7}.action h4.action-heading .method.options{color:#fff;background-color:#337ab7}.action h4.action-heading .method.put{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.patch{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.post{color:#fff;background-color:#5cb85c}.action h4.action-heading .method.delete{color:#fff;background-color:#d9534f}.action h4.action-heading code{color:#444;background-color:#f5f5f5;border-color:#cfcfcf;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid white;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#bce8f1}.action.get h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.head{border-color:#bce8f1}.action.head h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.options{border-color:#bce8f1}.action.options h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.post{border-color:#d6e9c6}.action.post h4.action-heading{color:#5cb85c;background:#dff0d8;border-bottom-color:#d6e9c6}.action.put{border-color:#faebcc}.action.put h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.patch{border-color:#faebcc}.action.patch h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.delete{border-color:#ebccd1}.action.delete h4.action-heading{color:#d9534f;background:#f2dede;border-bottom-color:#ebccd1}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-autenticação">Autenticação</a></li><li><a href="#header-cabeçalho-(header)-de-exemplo">Cabeçalho (Header) de exemplo</a></li><li><a href="#header-methodos-http">Methodos HTTP</a></li><li><a href="#header-status-codes-e-errors">Status Codes e Errors</a></li><li><a href="#header-erros-da-resposta-(error-response)">Erros da resposta (Error response)</a></li><li><a href="#header-example">Example</a></li><li><a href="#header-erros-de-validação-(validation-error)">Erros de validação (Validation Error)</a></li><li><a href="#header-erros-genéricos-(generic-error)">Erros genéricos (Generic Error)</a></li><li><a href="#header-dicionário-de-erros-(error-codes-dictionary)">Dicionário de erros (Error Codes Dictionary)</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#autenticação-1">Autenticação</a></div><div class="collapse-content"><ul><li><a href="#autenticação-login-do-usuário-post"><span class="badge post"><i class="fa fa-plus"></i></span>Solicita um token</a></li><li><a href="#autenticação-registro-do-usuário-post"><span class="badge post"><i class="fa fa-plus"></i></span>Registra um novo usuário</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#usuários">Usuários</a></div><div class="collapse-content"><ul><li><a href="#usuários-users">Users</a><ul><li><a href="#usuários-users-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Lista todos os usuários</a></li><li><a href="#usuários-users-post"><span class="badge post"><i class="fa fa-plus"></i></span>Cria um usuario</a></li></ul></li><li><a href="#usuários-buscando,-alterando-e-deletando-usuarios">Buscando, alterando e deletando usuarios</a><ul><li><a href="#usuários-buscando,-alterando-e-deletando-usuarios-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Buscando um usuario</a></li><li><a href="#usuários-buscando,-alterando-e-deletando-usuarios-delete"><span class="badge delete"><i class="fa fa-times"></i></span>Deletando um usuário</a></li><li><a href="#usuários-buscando,-alterando-e-deletando-usuarios-put"><span class="badge put"><i class="fa fa-pencil"></i></span>Atualizando um usuário</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#ferramentas">Ferramentas</a></div><div class="collapse-content"><ul><li><a href="#ferramentas-tools">Tools</a><ul><li><a href="#ferramentas-tools-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Lista todas as ferramentas</a></li><li><a href="#ferramentas-tools-post"><span class="badge post"><i class="fa fa-plus"></i></span>Cria uma ferramentas</a></li></ul></li><li><a href="#ferramentas-busca-por-tag-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Busca ferramentas por tags</a></li><li><a href="#ferramentas-buscando,-alterando-e-deletando-ferramentas">Buscando, alterando e deletando ferramentas</a><ul><li><a href="#ferramentas-buscando,-alterando-e-deletando-ferramentas-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Buscando uma ferramenta</a></li><li><a href="#ferramentas-buscando,-alterando-e-deletando-ferramentas-delete"><span class="badge delete"><i class="fa fa-times"></i></span>Deletando uma ferramenta</a></li><li><a href="#ferramentas-buscando,-alterando-e-deletando-ferramentas-put"><span class="badge put"><i class="fa fa-pencil"></i></span>Atualizando a ferramenta</a></li></ul></li></ul></div></div><p style="text-align: center; word-wrap: break-word;"><a href="http://localhost:3000">http://localhost:3000</a></p></nav><div class="content"><header><h1 id="top">API VUTTR (Very Useful Tools to Remember)</h1></header><p><em>Esta api foi desenvolvida para o challenge BossaBox. Trata-se de uma aplicação para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags.</em></p>
+<h2 id="header-autenticação">Autenticação <a class="permalink" href="#header-autenticação" aria-hidden="true">¶</a></h2>
+<ul>
+<li>
+<p>Esta API usa tokens <a href="http://jwt.io/">JWT</a> para a autenticação.</p>
+</li>
+<li>
+<p>Cada token deve ser atualizado antes de seu tempo de expiração.</p>
+</li>
+<li>
+<p>O token deve ser fornecido no cabeçalho <code>Authorization</code> não necessita da palavra Baerer.</p>
+</li>
+<li>
+<p>O token deve ser fornecido para cada solicitação que requer autenticação.</p>
+</li>
+<li>
+<p>Esta API emite <strong>long-lived access tokens</strong> (Tokens de longa duração). Um JWT de longa duração geralmente deve durar cerca de <strong>30 dias</strong>. Se nenhuma solicitação for feita, o token deve expirar e o usuário deve passar pelo fluxo de login novamente para obter um novo.</p>
+</li>
+<li>
+<p>Obs: Os endpoints básicos do challenge não possuem autenticação.</p>
+</li>
+</ul>
+<h3 id="header-cabeçalho-(header)-de-exemplo">Cabeçalho (Header) de exemplo <a class="permalink" href="#header-cabeçalho-(header)-de-exemplo" aria-hidden="true">¶</a></h3>
+<pre><code>Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9<span class="hljs-class">.eyJzdWIiOiJhNnZoQW8zRkc3dDEiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE0NzA1OTg5NzIsImV4cCI6MTQ3MDY4NTM3Mn0</span><span class="hljs-class">.ltA9zZmJKszBJuuV7pTWtY7LzLXrRUfebJDhy_jGMeM</span></code></pre>
+<h2 id="header-methodos-http">Methodos HTTP <a class="permalink" href="#header-methodos-http" aria-hidden="true">¶</a></h2>
+<p>Esta api usa os seguinte <strong>Verbos HTTP</strong> (methods):</p>
+<ul>
+<li>
+<p><code>GET</code> - <em>Read</em> - usado para <strong>recuperar</strong> um recurso.</p>
+</li>
+<li>
+<p><code>POST</code> - <em>Create</em> - usado para <strong>criar</strong> um novo recurso.</p>
+</li>
+<li>
+<p><code>PUT</code> - <em>Update/Replace</em> - usado para <strong>atualizar</strong> um recurso.</p>
+</li>
+<li>
+<p><code>PATCH</code> - <em>Update/Modify</em> - usado para <strong>atualizar</strong> um recurso.</p>
+</li>
+<li>
+<p><code>DELETE</code> - <em>Delete</em> - usado para <strong>deletar</strong> um recurso identificado por um ID.</p>
+</li>
+</ul>
+<h2 id="header-status-codes-e-errors">Status Codes e Errors <a class="permalink" href="#header-status-codes-e-errors" aria-hidden="true">¶</a></h2>
+<p>Esta API usa códigos de status HTTP para se comunicar com o consumidor da API.</p>
+<ul>
+<li>
+<p><code>200 OK</code> - usado para um caso de sucesso GET, PUT, PATCH or DELETE.</p>
+</li>
+<li>
+<p><code>201 Created</code> - resposta a um POST que resulta de uma criação.</p>
+</li>
+<li>
+<p><code>204 No Content</code> - Resposta a uma solicitação bem-sucedida que não retornará um corpo (como uma solicitação DELETE).</p>
+</li>
+<li>
+<p><code>400 Bad Request</code> - Solicitação malformada; erros de validação de formulário…</p>
+</li>
+<li>
+<p><code>401 Unauthorized</code> - Quando nenhum ou algum detalhes de autenticação fornecidos estão inválidos.</p>
+</li>
+<li>
+<p><code>403 Forbidden</code> - Quando a autenticação é bem-sucedida, mas o usuário autenticado não tem acesso ao recurso.</p>
+</li>
+<li>
+<p><code>404 Not Found</code> - Quando um recurso inexistente é solicitado.</p>
+</li>
+<li>
+<p><code>405 Method Not Allowed</code> - Método não permitido.</p>
+</li>
+<li>
+<p><code>406 Not Acceptable</code> - Não foi possível satisfazer o cabeçalho de aceitação do pedido.</p>
+</li>
+<li>
+<p><code>415 Unsupported Media Type</code> - Tipo de mídia não suportado na solicitação.</p>
+</li>
+</ul>
+<h3 id="header-erros-da-resposta-(error-response)">Erros da resposta (Error response) <a class="permalink" href="#header-erros-da-resposta-(error-response)" aria-hidden="true">¶</a></h3>
+<p>Esta API retorna códigos de erro legíveis por máquina e mensagens de erro legíveis por humanos no corpo da resposta quando um erro é encontrado.</p>
+<h4 id="header-example">Example <a class="permalink" href="#header-example" aria-hidden="true">¶</a></h4>
+<h5 id="header-erros-de-validação-(validation-error)">Erros de validação (Validation Error) <a class="permalink" href="#header-erros-de-validação-(validation-error)" aria-hidden="true">¶</a></h5>
+<pre><code class="language-js">{
+    <span class="hljs-string">"statusCode"</span>: <span class="hljs-number">400</span>,
+    <span class="hljs-string">"error"</span>: <span class="hljs-string">"Bad Request"</span>,
+    <span class="hljs-string">"message"</span>: <span class="hljs-string">"Invalid query parameters"</span>,
+    <span class="hljs-string">"data"</span>: {
+        <span class="hljs-string">"code"</span>: <span class="hljs-number">10003</span>,
+        <span class="hljs-string">"validation"</span>: {
+            <span class="hljs-string">"details"</span>:[
+                <span class="hljs-string">"name é obrigatório"</span>,
+                <span class="hljs-string">"email não é um email válido"</span>
+            ],
+        }
+    }
+}</code></pre>
+<h5 id="header-erros-genéricos-(generic-error)">Erros genéricos (Generic Error) <a class="permalink" href="#header-erros-genéricos-(generic-error)" aria-hidden="true">¶</a></h5>
+<pre><code class="language-js">{
+    <span class="hljs-string">"statusCode"</span>: <span class="hljs-number">401</span>,
+    <span class="hljs-string">"error"</span>: <span class="hljs-string">"Unauthorized"</span>,
+    <span class="hljs-string">"message"</span>: <span class="hljs-string">"Credenciais inválidas"</span>,
+     <span class="hljs-string">"data"</span>: {
+        <span class="hljs-string">"code"</span>: <span class="hljs-number">11003</span>
+    }
+}</code></pre>
+<h4 id="header-dicionário-de-erros-(error-codes-dictionary)">Dicionário de erros (Error Codes Dictionary) <a class="permalink" href="#header-dicionário-de-erros-(error-codes-dictionary)" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p><code>10003</code> - Parametros inválidos</p>
+</li>
+<li>
+<p><code>10005</code> - Data não está no padrão 8601 standard</p>
+</li>
+<li>
+<p><code>10010</code> - Content-Type inválido</p>
+</li>
+<li>
+<p><code>10011</code> - User-Agent inválido</p>
+</li>
+<li>
+<p><code>10012</code> - Application-Id inválido ou ausente</p>
+</li>
+<li>
+<p><code>11001</code> - token inválido ou expirado</p>
+</li>
+<li>
+<p><code>11003</code> - Dados de autenticação inválidos - <em>Método requer autenticação, mas não foi apresentado ou era totalmente inválido.</em></p>
+</li>
+<li>
+<p><code>11005</code> - Conta sem permissão para acessar este endpoint</p>
+</li>
+<li>
+<p><code>13003</code> - Sua conta está suspensa e não tem permissão para acessar este recurso</p>
+</li>
+</ul>
+<section id="autenticação-1" class="resource-group"><h2 class="group-heading">Autenticação <a href="#autenticação-1" class="permalink">&para;</a></h2><div id="autenticação-login-do-usuário" class="resource"><h3 class="resource-heading">Login do usuário <a href="#autenticação-login-do-usuário" class="permalink">&nbsp;&para;</a></h3><p>Os tokens de acesso são necessários para as rotas de usuários.</p>
+<div id="autenticação-login-do-usuário-post" class="action post"><h4 class="action-heading"><div class="name">Solicita um token</div><a href="#autenticação-login-do-usuário-post" class="method post">POST</a><code class="uri">/auth</code></h4><p>Permite recuperar um JSON Web Token válido para nome de usuário e senha.</p>
+<p><strong>Informações dos endpoints</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requer autenticação</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>Escopo restrito</td>
+<td>Não</td>
+</tr>
+</tbody>
+</table>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/auth</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john.doe@mail.com"</span></span>,
+  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"QXR0mi38a2"</span>
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Endereço de email do usuário"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">password</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Senha do usuário"</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"email"</span>,
+    <span class="hljs-string">"password"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."</span>
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">token</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"JSON Web Token."</span>
+    </span>}
+  </span>}
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="autenticação-registro-do-usuário" class="resource"><h3 class="resource-heading">Registro do usuário <a href="#autenticação-registro-do-usuário" class="permalink">&nbsp;&para;</a></h3><div id="autenticação-registro-do-usuário-post" class="action post"><h4 class="action-heading"><div class="name">Registra um novo usuário</div><a href="#autenticação-registro-do-usuário-post" class="method post">POST</a><code class="uri">/auth/register</code></h4><p>Cria uma nova conta de usuário.</p>
+<ul>
+<li>
+<p>O endereço de e-mail fornecido deve ser exclusivo.</p>
+</li>
+<li>
+<p>As senhas devem ter pelo menos seis caracteres.</p>
+</li>
+</ul>
+<p><strong>Informações dos endpoints</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requer autenticação</td>
+<td>Não</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Error codes</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>400</code></td>
+<td><code>4001</code></td>
+<td>Credenciais inválidas</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td><code>3001</code></td>
+<td>Usuário já está cadastrado</td>
+</tr>
+</tbody>
+</table>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/auth/register</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"john do"</span></span>,
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john.doe@mail.com"</span></span>,
+  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"QXR0mi38a2"</span>
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Nome do usuário."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"email do usuário."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">password</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"senha do usuário."</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"name"</span>,
+    <span class="hljs-string">"email"</span>,
+    <span class="hljs-string">"password"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>201</code></strong></div></div></div></section><section id="usuários" class="resource-group"><h2 class="group-heading">Usuários <a href="#usuários" class="permalink">&para;</a></h2><div id="usuários-users" class="resource"><h3 class="resource-heading">Users <a href="#usuários-users" class="permalink">&nbsp;&para;</a></h3><div id="usuários-users-get" class="action get"><h4 class="action-heading"><div class="name">Lista todos os usuários</div><a href="#usuários-users-get" class="method get">GET</a><code class="uri">/users</code></h4><p>Retorna uma lista de todos os usuários.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requer autenticado</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Escopo restrito</td>
+<td>Não</td>
+</tr>
+</tbody>
+</table>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/users</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">JWT &lt;token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2016-07-01T15:11:09.553Z"</span></span>,
+    "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value"><span class="hljs-string">"2016-07-01T15:11:09.553Z"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john.doe@mail.com"</span></span>,
+    "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"123456"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John"</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div id="usuários-users-post" class="action post"><h4 class="action-heading"><div class="name">Cria um usuario</div><a href="#usuários-users-post" class="method post">POST</a><code class="uri">/users</code></h4><p>Cria um usuario</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requer autenticado</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Escopo restrito</td>
+<td>Não</td>
+</tr>
+</tbody>
+</table>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/users</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"john do"</span></span>,
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john.doe@mail.com"</span></span>,
+  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"QXR0mi38a2"</span>
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Nome do usuário."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"email do usuário."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">password</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"senha do usuário."</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"name"</span>,
+    <span class="hljs-string">"email"</span>,
+    <span class="hljs-string">"password"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>201</code></strong></div></div></div><div id="usuários-buscando,-alterando-e-deletando-usuarios" class="resource"><h3 class="resource-heading">Buscando, alterando e deletando usuarios <a href="#usuários-buscando,-alterando-e-deletando-usuarios" class="permalink">&nbsp;&para;</a></h3><div id="usuários-buscando,-alterando-e-deletando-usuarios-get" class="action get"><h4 class="action-heading"><div class="name">Buscando um usuario</div><a href="#usuários-buscando,-alterando-e-deletando-usuarios-get" class="method get">GET</a><code class="uri">/users/{id}</code></h4><p>Retorna um usuário específico, identificado pelo ID.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requer autenticado</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Escopo restrito</td>
+<td>Não</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Error codes</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>400</code></td>
+<td><code>1000</code></td>
+<td>Recurso não encontrado</td>
+</tr>
+</tbody>
+</table>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/users/<span class="hljs-attribute" title="id">25</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>25</span></span><p>id do usuário.</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">JWT &lt;token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+  "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2016-07-01T15:11:09.553Z"</span></span>,
+  "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value"><span class="hljs-string">"2016-07-01T15:11:09.553Z"</span></span>,
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john.doe@mail.com"</span></span>,
+  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"123456"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John"</span>
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+      "<span class="hljs-attribute">enum</span>": <span class="hljs-value">[
+        <span class="hljs-number">1</span>
+      ]</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Short non-sequential url-friendly unique id."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ISO Date/time string. When this resource was created."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ISO Date/time string. When this resource was last updated."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Login. email do usuário deve ser único."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">password</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Login. Senha do usuário."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"primeiro nome do usuário."</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"id"</span>,
+    <span class="hljs-string">"email"</span>,
+    <span class="hljs-string">"password"</span>,
+    <span class="hljs-string">"name"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div id="usuários-buscando,-alterando-e-deletando-usuarios-delete" class="action delete"><h4 class="action-heading"><div class="name">Deletando um usuário</div><a href="#usuários-buscando,-alterando-e-deletando-usuarios-delete" class="method delete">DELETE</a><code class="uri">/users/{id}</code></h4><h4>Example URI</h4><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/users/<span class="hljs-attribute" title="id">25</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>25</span></span><p>Identificador único do usuário.</p>
+</dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong></div></div><div id="usuários-buscando,-alterando-e-deletando-usuarios-put" class="action put"><h4 class="action-heading"><div class="name">Atualizando um usuário</div><a href="#usuários-buscando,-alterando-e-deletando-usuarios-put" class="method put">PUT</a><code class="uri">/users/{id}</code></h4><p>Altera os dados do usuário</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requer autenticado</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Escopo restrito</td>
+<td>Não</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Error codes</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>400</code></td>
+<td><code>1000</code></td>
+<td>Recurso não encontrado</td>
+</tr>
+</tbody>
+</table>
+<h4>Example URI</h4><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/users/<span class="hljs-attribute" title="id">1</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Identificador único da ferramenta.</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">JWT &lt;token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">Attributes</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"john do"</span></span>,
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john.doe@mail.com"</span></span>,
+  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"QXR0mi38a2"</span>
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">Attributes</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Nome do usuário."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"email do usuário."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">password</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"senha do usuário."</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"name"</span>,
+    <span class="hljs-string">"email"</span>,
+    <span class="hljs-string">"password"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2016-07-01T15:11:09.553Z"</span></span>,
+    "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value"><span class="hljs-string">"2016-07-01T15:11:09.553Z"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john.doe@mail.com"</span></span>,
+    "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"123456"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John"</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="ferramentas" class="resource-group"><h2 class="group-heading">Ferramentas <a href="#ferramentas" class="permalink">&para;</a></h2><div id="ferramentas-tools" class="resource"><h3 class="resource-heading">Tools <a href="#ferramentas-tools" class="permalink">&nbsp;&para;</a></h3><div id="ferramentas-tools-get" class="action get"><h4 class="action-heading"><div class="name">Lista todas as ferramentas</div><a href="#ferramentas-tools-get" class="method get">GET</a><code class="uri">/tools</code></h4><p>Retorna uma lista de todas as ferramentas cadastradas.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requer autenticação</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>Escopo restrito</td>
+<td>Não</td>
+</tr>
+</tbody>
+</table>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/tools</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Notion"</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://notion.so"</span></span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized."</span></span>,
+    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+      <span class="hljs-string">"organization"</span>,
+      <span class="hljs-string">"planning"</span>,
+      <span class="hljs-string">"collaboration"</span>,
+      <span class="hljs-string">"writing"</span>,
+      <span class="hljs-string">"calendar"</span>,
+      <span class="hljs-string">"nodeJS"</span>
+    ]
+  </span>}
+]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div id="ferramentas-tools-post" class="action post"><h4 class="action-heading"><div class="name">Cria uma ferramentas</div><a href="#ferramentas-tools-post" class="method post">POST</a><code class="uri">/tools</code></h4><p>Cria uma ferramenta</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requer autenticação</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>Escopo restrito</td>
+<td>Não</td>
+</tr>
+</tbody>
+</table>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/tools</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"hotel"</span></span>,
+  "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://github.com/typicode/hotel"</span></span>,
+  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+    <span class="hljs-string">"node"</span>,
+    <span class="hljs-string">"organizing"</span>,
+    <span class="hljs-string">"webapps"</span>,
+    <span class="hljs-string">"domain"</span>,
+    <span class="hljs-string">"developer"</span>,
+    <span class="hljs-string">"https"</span>,
+    <span class="hljs-string">"proxy"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Titulo da ferramenta."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Link da ferramenta."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Tags da ferramenta."</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"title"</span>,
+    <span class="hljs-string">"link"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>201</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"hotel"</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://github.com/typicode/hotel"</span></span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box."</span></span>,
+    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+      <span class="hljs-string">"node"</span>,
+      <span class="hljs-string">"organizing"</span>,
+      <span class="hljs-string">"webapps"</span>,
+      <span class="hljs-string">"domain"</span>,
+      <span class="hljs-string">"developer"</span>,
+      <span class="hljs-string">"https"</span>,
+      <span class="hljs-string">"proxy"</span>
+    ]
+  </span>}
+]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="ferramentas-busca-por-tag" class="resource"><h3 class="resource-heading">Busca por tag <a href="#ferramentas-busca-por-tag" class="permalink">&nbsp;&para;</a></h3><div id="ferramentas-busca-por-tag-get" class="action get"><h4 class="action-heading"><div class="name">Busca ferramentas por tags</div><a href="#ferramentas-busca-por-tag-get" class="method get">GET</a><code class="uri">/tolls{?tag}</code></h4><h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/tolls?<span class="hljs-attribute">tag=</span><span class="hljs-literal"></span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>tag</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>parametro para realizar busca por tag.</p>
+</dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Notion"</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://notion.so"</span></span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized."</span></span>,
+    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+      <span class="hljs-string">"organization"</span>,
+      <span class="hljs-string">"planning"</span>,
+      <span class="hljs-string">"collaboration"</span>,
+      <span class="hljs-string">"writing"</span>,
+      <span class="hljs-string">"calendar"</span>,
+      <span class="hljs-string">"nodeJS"</span>
+    ]
+  </span>}
+]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="ferramentas-buscando,-alterando-e-deletando-ferramentas" class="resource"><h3 class="resource-heading">Buscando, alterando e deletando ferramentas <a href="#ferramentas-buscando,-alterando-e-deletando-ferramentas" class="permalink">&nbsp;&para;</a></h3><div id="ferramentas-buscando,-alterando-e-deletando-ferramentas-get" class="action get"><h4 class="action-heading"><div class="name">Buscando uma ferramenta</div><a href="#ferramentas-buscando,-alterando-e-deletando-ferramentas-get" class="method get">GET</a><code class="uri">/tolls/{id}</code></h4><h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/tolls/<span class="hljs-attribute" title="id">1</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Identificador único da ferramenta.</p>
+</dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2016-07-01T15:11:09.553Z"</span></span>,
+    "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value"><span class="hljs-string">"2016-07-01T15:11:09.553Z"</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Notion"</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://notion.so"</span></span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized."</span></span>,
+    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+      <span class="hljs-string">"organization"</span>,
+      <span class="hljs-string">"planning"</span>,
+      <span class="hljs-string">"collaboration"</span>,
+      <span class="hljs-string">"writing"</span>,
+      <span class="hljs-string">"calendar"</span>,
+      <span class="hljs-string">"nodeJS"</span>
+    ]
+  </span>}
+]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+  "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+    "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Short non-sequential url-friendly unique id."</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ISO Date/time string. When this resource was created."</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ISO Date/time string. When this resource was last updated."</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">title</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Titulo da ferramenta."</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">link</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Link da ferramenta."</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+          <span class="hljs-string">"string"</span>,
+          <span class="hljs-string">"null"</span>
+        ]</span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"primeiro nome do usuário."</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+        "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+        </span>}
+      </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+      <span class="hljs-string">"title"</span>,
+      <span class="hljs-string">"link"</span>,
+      <span class="hljs-string">"tags"</span>
+    ]
+  </span>}</span>,
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div id="ferramentas-buscando,-alterando-e-deletando-ferramentas-delete" class="action delete"><h4 class="action-heading"><div class="name">Deletando uma ferramenta</div><a href="#ferramentas-buscando,-alterando-e-deletando-ferramentas-delete" class="method delete">DELETE</a><code class="uri">/tolls/{id}</code></h4><h4>Example URI</h4><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/tolls/<span class="hljs-attribute" title="id">1</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Identificador único da ferramenta.</p>
+</dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>204</code></strong></div></div><div id="ferramentas-buscando,-alterando-e-deletando-ferramentas-put" class="action put"><h4 class="action-heading"><div class="name">Atualizando a ferramenta</div><a href="#ferramentas-buscando,-alterando-e-deletando-ferramentas-put" class="method put">PUT</a><code class="uri">/tolls/{id}</code></h4><h4>Example URI</h4><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">http://localhost:3000</span>/tolls/<span class="hljs-attribute" title="id">1</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Identificador único da ferramenta.</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"hotel"</span></span>,
+  "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://github.com/typicode/hotel"</span></span>,
+  "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+    <span class="hljs-string">"node"</span>,
+    <span class="hljs-string">"organizing"</span>,
+    <span class="hljs-string">"webapps"</span>,
+    <span class="hljs-string">"domain"</span>,
+    <span class="hljs-string">"developer"</span>,
+    <span class="hljs-string">"https"</span>,
+    <span class="hljs-string">"proxy"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Titulo da ferramenta."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Link da ferramenta."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Tags da ferramenta."</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+    <span class="hljs-string">"title"</span>,
+    <span class="hljs-string">"link"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>204</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"hotel"</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://github.com/typicode/hotel"</span></span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box."</span></span>,
+    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+      <span class="hljs-string">"node"</span>,
+      <span class="hljs-string">"organizing"</span>,
+      <span class="hljs-string">"webapps"</span>,
+      <span class="hljs-string">"domain"</span>,
+      <span class="hljs-string">"developer"</span>,
+      <span class="hljs-string">"https"</span>,
+      <span class="hljs-string">"proxy"</span>
+    ]
+  </span>}
+]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 31 Mar 2021</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>

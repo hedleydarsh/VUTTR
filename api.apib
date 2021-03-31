@@ -1,0 +1,362 @@
+FORMAT: 1A
+
+HOST: http://localhost:3000
+
+# API VUTTR (Very Useful Tools to Remember)
+
+*Esta api foi desenvolvida para o challenge BossaBox. Trata-se de uma aplicação para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags.*
+
+## Autenticação
+
++ Esta API usa tokens [JWT](http://jwt.io/) para a autenticação.
++ Cada token deve ser atualizado antes de seu tempo de expiração.
++ O token deve ser fornecido no cabeçalho `Authorization` não necessita da palavra Baerer.
++ O token deve ser fornecido para cada solicitação que requer autenticação.
++ Esta API emite **long-lived access tokens** (Tokens de longa duração). Um JWT de longa duração geralmente deve durar cerca de **30 dias**. Se nenhuma solicitação for feita, o token deve expirar e o usuário deve passar pelo fluxo de login novamente para obter um novo.
++ Obs: Os endpoints básicos do challenge não possuem autenticação. 
+
+### Cabeçalho (Header) de exemplo
+```
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhNnZoQW8zRkc3dDEiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE0NzA1OTg5NzIsImV4cCI6MTQ3MDY4NTM3Mn0.ltA9zZmJKszBJuuV7pTWtY7LzLXrRUfebJDhy_jGMeM
+```
+## Methodos HTTP
+
+Esta api usa os seguinte **Verbos HTTP** (methods):
+
++ `GET` - *Read* - usado para **recuperar** um recurso.
++ `POST` - *Create* - usado para **criar** um novo recurso.
++ `PUT` - *Update/Replace* - usado para **atualizar** um recurso.
++ `PATCH` - *Update/Modify* - usado para **atualizar** um recurso.
++ `DELETE` - *Delete* - usado para **deletar** um recurso identificado por um ID.
+
+## Status Codes e Errors
+
+Esta API usa códigos de status HTTP para se comunicar com o consumidor da API.
+
++ `200 OK` - usado para um caso de sucesso GET, PUT, PATCH or DELETE.
++ `201 Created` - resposta a um POST que resulta de uma criação.
++ `204 No Content` - Resposta a uma solicitação bem-sucedida que não retornará um corpo (como uma solicitação DELETE).
++ `400 Bad Request` - Solicitação malformada; erros de validação de formulário...
++ `401 Unauthorized` - Quando nenhum ou algum detalhes de autenticação fornecidos estão inválidos.
++ `403 Forbidden` - Quando a autenticação é bem-sucedida, mas o usuário autenticado não tem acesso ao recurso.
++ `404 Not Found` - Quando um recurso inexistente é solicitado.
++ `405 Method Not Allowed` - Método não permitido.
++ `406 Not Acceptable` - Não foi possível satisfazer o cabeçalho de aceitação do pedido.
++ `415 Unsupported Media Type` - Tipo de mídia não suportado na solicitação.
+
+### Erros da resposta (Error response)
+
+Esta API retorna códigos de erro legíveis por máquina e mensagens de erro legíveis por humanos no corpo da resposta quando um erro é encontrado.
+#### Example
+
+##### Erros de validação (Validation Error)
+
+```js
+{
+    "statusCode": 400,
+    "error": "Bad Request",
+    "message": "Invalid query parameters",
+    "data": {
+        "code": 10003,
+        "validation": {
+            "details":[
+                "name é obrigatório",
+                "email não é um email válido"
+            ],
+        }
+    }
+}
+```
+
+##### Erros genéricos (Generic Error)
+
+```js
+{
+    "statusCode": 401,
+    "error": "Unauthorized",
+    "message": "Credenciais inválidas",
+     "data": {
+        "code": 11003
+    }
+}
+```
+
+#### Dicionário de erros (Error Codes Dictionary)
+
++ `10003` - Parametros inválidos
++ `10005` - Data não está no padrão 8601 standard
++ `10010` - Content-Type inválido
++ `10011` - User-Agent inválido
++ `10012` - Application-Id inválido ou ausente
++ `11001` - token inválido ou expirado
++ `11003` - Dados de autenticação inválidos - *Método requer autenticação, mas não foi apresentado ou era totalmente inválido.*
++ `11005` - Conta sem permissão para acessar este endpoint
++ `13003` - Sua conta está suspensa e não tem permissão para acessar este recurso
+
+# Group Autenticação
+
+## Login do usuário [/auth]
+
+Os tokens de acesso são necessários para as rotas de usuários.
+
+### Solicita um token [POST]
+
+Permite recuperar um JSON Web Token válido para nome de usuário e senha.
+
+**Informações dos endpoints**
+
+|                      |     |
+|----------------------|-----|
+| Requer autenticação  | Não |
+| Escopo restrito      | Não |
+
++ Request (application/json)
+    + Attributes
+        + email: `john.doe@mail.com` (string, required) - Endereço de email do usuário
+        + password: `QXR0mi38a2` (string, required) - Senha do usuário
+
++ Response 200 (application/json)
+    + Attributes
+        + token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....` (string) - JSON Web Token.
+
+## Registro do usuário [/auth/register]
+
+### Registra um novo usuário [POST]
+
+Cria uma nova conta de usuário.
+
++ O endereço de e-mail fornecido deve ser exclusivo.
++ As senhas devem ter pelo menos seis caracteres.
+
+**Informações dos endpoints**
+
+|                         |     |
+|-------------------------|-----|
+| Requer autenticação     | Não |
+
+**Error codes**
+
+|       |         |                                             |
+|-------|---------| ------------------------------------------- |
+| `400` | `4001`  | Credenciais inválidas                       |
+| `400` | `3001`  | Usuário já está cadastrado                  |
+
++ Request (application/json)
+    + Attributes
+        + name: `john do` (string, required) - Nome do usuário.
+        + email: `john.doe@mail.com` (string, required) - email do usuário.
+        + password: `QXR0mi38a2` (string, required) - senha do usuário.
+
++ Response 201
+
+# Group Usuários
+
+## Users [/users]
+
+### Lista todos os usuários [GET]
+
+Retorna uma lista de todos os usuários.
+
+|                         |     |
+|-------------------------|-----|
+| Requer autenticado      | Sim |
+| Escopo restrito         | Não |
+
++ Request
+    + Headers
+
+            Authorization: JWT <token>
+
++ Response 200 (application/json)
+    + Attributes (array[User])
+
+### Cria um usuario [POST]
+
+Cria um usuario
+
+|                         |     |
+|-------------------------|-----|
+| Requer autenticado      | Sim |
+| Escopo restrito         | Não |
+    
++ Request (application/json)
+    + Attributes
+        + name: `john do` (string, required) - Nome do usuário.
+        + email: `john.doe@mail.com` (string, required) - email do usuário.
+        + password: `QXR0mi38a2` (string, required) - senha do usuário.
+
++ Response 201 
+
+## Buscando, alterando e deletando usuarios [/users/{id}]
+
+### Buscando um usuario [GET]
+
+Retorna um usuário específico, identificado pelo ID.
+
+|                         |     |
+|-------------------------|-----|
+| Requer autenticado      | Sim |
+| Escopo restrito         | Não |
+
+**Error codes**
+
+|       |         |                               |
+|-------|---------| ----------------------------- |
+| `400` | `1000`  | Recurso não encontrado        |
+
++ Parameters
+    + id: 25 (number) - id do usuário.
+
++ Request
+    + Headers
+
+            Authorization: JWT <token>
+
++ Response 200 (application/json)
+    + Attributes (User)
+
+### Deletando um usuário [DELETE]
+
++ Parameters
+    + id: 25 (number) - Identificador único do usuário.
+
++ Response 200 
+    + Attributes (object)
+
+### Atualizando um usuário [PUT]
+
+ Altera os dados do usuário
+
+|                         |     |
+|-------------------------|-----|
+| Requer autenticado      | Sim |
+| Escopo restrito         | Não |
+
+**Error codes**
+
+|       |         |                               |
+|-------|---------| ----------------------------- |
+| `400` | `1000`  | Recurso não encontrado        |
+
++ Parameters
+    + id: 1 (number) - Identificador único da ferramenta.
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization: JWT <token>
+    + Attributes
+         + Attributes
+        + name: `john do` (string, required) - Nome do usuário.
+        + email: `john.doe@mail.com` (string, required) - email do usuário.
+        + password: `QXR0mi38a2` (string, required) - senha do usuário.
+
++ Response 200 (application/json)
+    + Attributes (array[User])
+
+# Group Ferramentas
+
+## Tools [/tools]
+
+### Lista todas as ferramentas [GET]
+
+Retorna uma lista de todas as ferramentas cadastradas.
+
+|                         |     |
+|-------------------------|-----|
+| Requer autenticação     | Não |
+| Escopo restrito         | Não |
+    
++ Response 200 (application/json)
+    + Attributes (array[Toll])
+
+### Cria uma ferramentas [POST]
+
+Cria uma ferramenta
+
+|                         |     |
+|-------------------------|-----|
+| Requer autenticação     | Não |
+| Escopo restrito         | Não |
+    
++ Request (application/json)
+    + Attributes
+        + title: hotel (string, required) - Titulo da ferramenta.
+        + link: https://github.com/typicode/hotel  (string, required) - Link da ferramenta.
+        + tags: node, organizing, webapps, domain, developer, https, proxy (array) - Tags da ferramenta.
+
++ Response 201 (application/json)
+    + Attributes (array[TollCreate])
+
+## Busca por tag [/tolls{?tag}]
+
+### Busca ferramentas por tags [GET]
+
++ Parameters
+    + tag (string, optional) - parametro para realizar busca por tag.
+
++ Response 200 (application/json)
+    + Attributes (array[Toll])
+
+## Buscando, alterando e deletando ferramentas [/tolls/{id}]
+
+### Buscando uma ferramenta [GET]
+
++ Parameters
+    + id: 1 (number) - Identificador único da ferramenta.
+
++ Response 200 
+    + Attributes (array[TollResource])
+
+### Deletando uma ferramenta [DELETE]
+
++ Parameters
+    + id: 1 (number) - Identificador único da ferramenta.
+
++ Response 204 
+    + Attributes (object)
+
+### Atualizando a ferramenta [PUT]
+
++ Parameters
+    + id: 1 (number) - Identificador único da ferramenta.
+
++ Request (application/json)
+    + Attributes
+        + title: hotel (string, required) - Titulo da ferramenta.
+        + link: https://github.com/typicode/hotel  (string, required) - Link da ferramenta.
+        + tags: node, organizing, webapps, domain, developer, https, proxy (array) - Tags da ferramenta.
+
++ Response 204 (application/json)
+    + Attributes (array[TollCreate])
+
+# Data Structures
+
+## Resource (object)
++ id: `1` (number, fixed) - Short non-sequential url-friendly unique id.
++ createdAt: `2016-07-01T15:11:09.553Z` (string) - ISO Date/time string. When this resource was created.
++ updatedAt: `2016-07-01T15:11:09.553Z` (string) - ISO Date/time string. When this resource was last updated.
+
+## User (Resource)
++ email: `john.doe@mail.com` (string, required) - Login. email do usuário deve ser único.
++ password: `123456` (string, required) - Login. Senha do usuário.
++ name: `John` (string, required) - primeiro nome do usuário.
+
+## TollResource (Resource)
++ title: `Notion` (string, required) - Titulo da ferramenta.
++ link: `https://notion.so` (string, required) - Link da ferramenta.
++ description: `All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized.` (string, optional, nullable) - primeiro nome do usuário.
++ tags: organization, planning, collaboration, writing, calendar, nodeJS (array, required)
+
+## Toll ()
++ title: `Notion` (string, required) - Titulo da ferramenta.
++ link: `https://notion.so` (string, required) - Link da ferramenta.
++ description: `All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized.` (string, optional, nullable) - primeiro nome do usuário.
++ tags: organization, planning, collaboration, writing, calendar, nodeJS (array, required)
+
+## TollCreate ()
++ title: hotel (string, required) - Titulo da ferramenta.
++ link: https://github.com/typicode/hotel (string, required) - Link da ferramenta.
++ description: `Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.` (string, optional, nullable) - primeiro nome do usuário.
++ tags: node, organizing, webapps, domain, developer, https, proxy (array, required)

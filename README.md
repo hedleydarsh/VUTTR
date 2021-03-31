@@ -45,4 +45,34 @@ npx sequelize db:migrate
 $ npm run dev
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+
+### As rotas do desafio não precisão de autenticação, são elas:
+## GET  - localhost:3000/tools -> Lista todas as ferramentas.
+## POST - localhost:3000/tools -> Cria uma nova ferramenta.
+   Deverá utilizar por exemplo:
+   header: Content-Type: application/json
+   body: {
+          "title": "hotel",
+          "link": "https://github.com/typicode/hotel",
+          "tags": [
+              "node",
+              "organizing",
+              "webapps",
+              "domain",
+              "developer",
+              "https",
+              "proxy"
+          ]
+    }
+    
+## GET - localhost:3000/tools/{id} -> Lista uma ferramenta por id.
+## GET - localhost:3000/tools?tag="texto" -> Lista ferramentas por tags.
+## DELETE - localhost:3000/tools/{id} -> Deleta uma ferramenta por id.
+## PUT - localhost:3000/tools/{id} -> atualiza a ferramenta, utilize os atributos mostrados no método post.
+
+# As rotas de usuário possuem autenticação, então você precisará registrar um usuário, use a rota
+## GET - localhost:3000/auth/register -> Para registrar seu usuário.
+
+# Para saber como testar as rotas de usuário abra a documentação que se encontra no arquivo doc_api.html
+
 ```
